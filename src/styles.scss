@@ -1,0 +1,291 @@
+html,
+body {
+    font-size: 13px !important;
+    font-weight: 400;
+    color: var(--body-color);
+    background: var(--bg-200);
+}
+
+/* ========== start:: Google Font ========== */
+/* ========== Poppins ==========*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+/* ========== end:: Google Font ========== */
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ========== start:: Scrollbar ========== */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 6px;
+    background: var(--bg-300);
+}
+
+::-webkit-scrollbar-corner {
+    background: var(--bg-200);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-bar);
+    border-radius: 6px;
+}
+
+/* ========== end:: Scrollbar ========== */
+
+.spinner-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    position: fixed;
+    background: #22275f24;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    .spinner-border {
+        border: 0.25em solid var(--main-color);
+        border-right-color: var(--primary);
+        width: 2.3rem;
+        height: 2.3rem;
+    }
+}
+
+.border {
+    border: 1px solid var(--border-color);
+
+    &-dashed {
+        border: 1px dashed var(--border-dashed);
+
+    }
+
+    &-danger {
+        border-color: var(--danger) !important;
+    }
+}
+
+.btn {
+    &.btn-action {
+        color: var(--icon-color);
+        background: var(--bg-300);
+        font-size: 12px;
+        padding: 2px 7px;
+
+        &:hover {
+            cursor: pointer;
+            background: var(--primary);
+            color: white;
+        }
+    }
+
+    &-success {
+        background: var(--success) !important;
+        border: 1px solid var(--success) !important;
+    }
+
+    &-danger {
+        background: var(--danger) !important;
+        border: 1px solid var(--danger) !important;
+    }
+
+    &-primary {
+        background: var(--primary) !important;
+        border: 1px solid var(--primary) !important;
+    }
+
+    &-secondary {
+        background: var(--secondary) !important;
+        border: 1px solid var(--secondary) !important;
+    }
+
+    &-sm {
+        padding: 6px 8px;
+        font-size: 11px;
+    }
+}
+
+.bg- {
+    &success {
+        background: var(--success) !important;
+    }
+
+    &danger {
+        background: var(--danger) !important;
+    }
+}
+
+.badge {
+    font-weight: 600;
+    padding: 5px 8px;
+    border: none;
+    font-size: 10px;
+
+    &.bg-success {
+        background: var(--success) !important;
+        color: white;
+    }
+
+    &.bg-danger {
+        background: var(--danger) !important;
+        color: white;
+    }
+}
+
+.text- {
+    &muted {
+        color: #a5a5b5 !important;
+    }
+
+    &danger {
+        color: var(--danger) !important
+    }
+
+    &success {
+        color: var(--success) !important;
+    }
+
+    &dark {
+        color: var(--body-color) !important;
+
+    }
+
+    &sm {
+        font-size: 10px !important;
+    }
+
+    &normal {
+        font-size: 12px !important;
+    }
+
+    &md {
+        font-size: 14px !important;
+    }
+
+    &lg {
+        font-size: 16px !important;
+    }
+}
+
+
+//form
+.form {
+    &-text {
+        color: var(--icon-color);
+        font-size: 11px;
+    }
+
+    &-label {
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--body-color);
+        margin-bottom: 4px;
+    }
+
+    &-control {
+        background-color: transparent;
+        font-size: 12px;
+        color: var(--body-color);
+        border: 1px solid var(--border-dashed);
+
+        &:focus {
+            box-shadow: none !important;
+            border-color: var(--main-color);
+        }
+
+        &:not(textarea) {
+            height: calc(1.5em + 1.3rem + 2px);
+        }
+    }
+}
+
+
+
+/* ========== start:: Dark theme ========== */
+
+.dark-theme {
+    .header {
+        .header-right {
+            .btn-menu {
+                &:hover {
+                    background: var(--bg-100);
+                }
+            }
+        }
+    }
+
+    .form-control:focus {
+        background-color: var(--bg-300);
+        color: var(--body-color);
+    }
+
+}
+
+
+/* ========== end:: Dark theme ========== */
+
+
+
+.input-group {
+    border: 1px solid var(--border-dashed);
+    border-radius: 6px;
+
+    &:focus-within {
+        border: 1px solid var(--main-color);
+    }
+
+    .input-group-text {
+        background-color: var(--bg-200);
+        border: none;
+    }
+}
+
+.input-group>.form-control {
+    border: none;
+
+}
+
+
+
+body:not(.theme-default) {
+
+    .p-datatable .p-datatable-tbody>tr:not(.p-highlight) {
+        background: var(--bg-200) !important;
+    }
+
+    .p-datatable .p-datatable-tbody>tr>td {
+        border-bottom: 0.5px dashed var(--border-dashed) !important;
+    }
+}
+
+
+.card {
+    .card-header {
+        background: var(--bg-200);
+        border-top-left-radius: calc(25px/2);
+        border-top-right-radius: calc(25px/2);
+        padding-bottom: 0;
+        padding-top: 0;
+        border-bottom: 0;
+        font-weight: 500;
+        color: var(--body-color);
+        min-height: 44px;
+
+
+    }
+
+    border: none;
+    border-radius: 6px;
+    background: var(--bg-200);
+
+    .card-body {
+        padding: 14px;
+    }
+}

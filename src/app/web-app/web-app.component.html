@@ -1,0 +1,192 @@
+<div [ngClass]="[sidebarToggleStatus?'sidebar-active':' sidebar-active aside-minimize', sideBarHover?'sidebar-active aside-minimize aside-minimize-hover':'']"
+    (window:resize)="onResize($event)">
+    <div class="d-flex flex-column main-container">
+        <!--begin::Sidebar-->
+        <aside class="aside aside-left d-flex flex-column">
+            <!--begin::Logo-->
+            <div class="brand">
+                <a class="brand-logo">
+                    <img class="logo-img" alt="logo-img" src="assets/images/PDO_Logo.png">
+                    <span class="logo-text">PSR</span>
+                </a>
+            </div>
+            <!--end::Logo-->
+            <!--begin::Sidebar Menu-->
+            <div class="sidebar-menu">
+                <ul class="list-box list-unstyled mt-4 mb-0" id="navaccordion">
+                    <li class="menu-item-div">
+                        <a class="btn btn-toggle align-items-center parent-menu" data-bs-toggle="collapse">
+                            <span class="menu-icon me-4"><i class="fa-solid fa-house"></i></span>
+                            <span class="menu-label">Home</span>
+                        </a>
+                    </li>
+                    <li class="menu-item-div">
+                        <a class="btn btn-toggle align-items-center parent-menu active" data-bs-toggle="collapse"
+                            data-bs-target="#homecollapse1" aria-expanded="true">
+                            <span class="menu-icon me-4">
+                                <i class="fa-solid fa-user-gear"></i>
+                            </span>
+                            <span class="menu-label">Parent 1</span>
+                            <span class="toggle-icon"><i class="fa-solid fa-chevron-right"></i></span>
+                        </a>
+                        <div class="collapse show" id="homecollapse1" data-bs-parent="#navaccordion">
+                            <ul class="btn-toggle-nav list-unstyled child-menu">
+                                <li><a class="" routerLinkActive="active">
+                                        <span class="menu-dot"></span>
+                                        <span class="menu-label">Child Menu 1
+                                        </span></a></li>
+                                <li><a class="" routerLinkActive="active">
+                                        <span class="menu-dot"></span>
+
+                                        <span class="menu-label">Child- Menu 2</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="menu-item-div">
+                        <a routerLinkActive="active" class="btn btn-toggle align-items-center parent-menu "
+                            data-bs-toggle="collapse">
+                            <span class="menu-icon me-4"><i class="fa-solid fa-file-arrow-up"></i></span>
+                            <span class="menu-label">Menu 2</span>
+                        </a>
+                    </li>
+                    <li class="menu-item-div">
+                        <a routerLinkActive="active" class="btn btn-toggle align-items-center parent-menu "
+                            data-bs-toggle="collapse">
+                            <span class="menu-icon me-4"><i class="fa-solid fa-file-arrow-up"></i></span>
+                            <span class="menu-label">Menu 3</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--end::Sidebar Menu-->
+        </aside>
+        <!--end::Sidebar-->
+        <div class="outer-panel d-flex flex-column">
+            <!--begin::Header-->
+            <div class="header header-fixed ">
+                <div class="container-fluid d-flex align-items-center justify-content-between">
+                    <div class="header-menu-panel">
+                        <div class="header-left">
+                            <a class="brand-toggle btn p-0" (click)="toggleSidebar()">
+                                <span class="icon">
+                                    <i class="fa-solid fa-bars"></i>
+                                </span>
+                                <ng-template #leftToggle>
+                                    <span class="transform">
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </span>
+                                </ng-template>
+
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <a class="btn btn-menu">
+                            <div class="icon">
+                                <i class="fa-solid fa-gear"></i>
+                            </div>
+                        </a>
+                        <a class="btn btn-menu" (click)="expandScreen()">
+                            <div class="icon" *ngIf="expandToggle;else expScrFalse">
+                                <i class="fa-solid fa-compress"></i>
+                            </div>
+                            <ng-template #expScrFalse>
+                                <div class="icon"> <i class="fa-solid fa-expand"></i> </div>
+                            </ng-template>
+                        </a>
+                        <a class="btn btn-menu" (click)="switchTheme();">
+                            <div class="icon" *ngIf="!darkThemeMode; else darkTheme">
+                                <i class="fa-solid fa-cloud-moon"></i>
+                            </div>
+                            <ng-template #darkTheme>
+                                <div class="icon"> <i class="fa-solid fa-cloud-sun"></i> </div>
+                            </ng-template>
+                        </a>
+                        <div class="user-container">
+                            <div class="user-name">
+                                <div class="text-muted">Hi,</div>Praveen
+                                <i class="ms-2 fa-solid fa-caret-down"></i>
+                            </div>
+                            <div class="user-img">
+                                <img src="assets/images/user.png" alt="user-profile">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end::Header-->
+            <!-- begin::Main content -->
+            <div class="container-fluid main">
+                <router-outlet></router-outlet>
+            </div>
+            <!-- end::Main content -->
+        </div>
+    </div>
+</div>
+<!-- <p-dialog class="user-profile-modal" [modal]="true" [(visible)]="displayUserModal" header="User Profile"
+    position="top-right" [resizable]="false" [style]="{width: '460px'}" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="header">
+        <span> User Profile </span>
+    </ng-template>
+    <div class="profile-container">
+        <div class="row">
+            <div class="col-sm-4 col-left">
+                <div class="img-container"><img src="assets/images/user.png" alt=""></div>
+            </div>
+            <div class="col-sm-8 col-right d-flex align-content-between flex-wrap">
+                <div class="user-name"> {{userDetails?.fullName}} <span class="badge"> {{userDetails?.acdName}} </span>
+                </div>
+                <div class="group-email"><span><i class="fa-solid fa-envelope-circle-check"></i></span>
+                    {{userDetails?.email}}</div>
+                <a type="button" class="btn btn-outline-primary" routerLink>
+                    <i class="me-2 fa-solid fa-right-from-bracket"></i> Sign Out
+                </a>
+            </div>
+        </div>
+    </div>
+</p-dialog> -->
+
+<!-- <p-dialog class="app-settings-modal" [modal]="true" header="App Settings" [(visible)]="displaySetModal"
+    position="top-right" [resizable]="false" [style]="{width: '300px'}" [draggable]="false" [resizable]="false">
+    <ul class="settings-panel">
+        <li class="set-item  theme-defualt">
+            <a class="item active" (click)="switchTemplate($event,'theme-default');">
+                <div class="outer-layer">
+                    <span class="me-2 icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span> <label
+                        for="theme1">Theme 1</label>
+                </div>
+                <span class="color-box">
+                </span>
+            </a>
+        </li>
+        <li class="set-item  theme-blue">
+            <a class="item" (click)="switchTemplate($event,'theme-blue');">
+                <div class="outer-layer">
+                    <span class="me-2 icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span> <label
+                        for="theme2">Theme 2</label>
+                </div>
+                <span class="color-box"></span>
+            </a>
+        </li>
+        <li class="set-item theme-purple">
+            <a class="item" (click)="switchTemplate($event,'theme-purple');">
+                <div class="outer-layer">
+                    <span class="me-2 icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span> <label
+                        for="theme3">Theme 3</label>
+                </div>
+                <span class="color-box "></span>
+            </a>
+        </li>
+        <li class="set-item theme-dark-green">
+            <a class="item" (click)="switchTemplate($event,'theme-dark-green');">
+                <div class="outer-layer">
+                    <span class="me-2 icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span><label
+                        for="theme4">Theme 4</label>
+                </div>
+                <span class="color-box "></span>
+
+            </a>
+        </li>
+    </ul>
+</p-dialog> -->
